@@ -10,7 +10,6 @@ void setup() {
   pinMode(LED, OUTPUT);
   Serial.begin(9600);
   Serial.println("Hello world");
-
 }
 
 void loop() {
@@ -21,5 +20,4 @@ void loop() {
   Serial.println("Turning OFF the LED");
   digitalWrite(LED, LOW);
   delay(wait_time);
-
 }
