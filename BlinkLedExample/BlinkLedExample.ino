@@ -1,23 +1,39 @@
 
-//Different ways to define a PIN:
-#define LED 13 
-const int ledPin = 13;
-//Define also variables here:
-const int wait_time = 1000;
+const int pin_vermell = 6;
+const int pin_groc = 7;
+const int pin_verd = 8;
+const int pin_LDR = A0;
 
 void setup() {
-  // put your setup code here, to run once:
-  pinMode(LED, OUTPUT);
+  pinMode(pin_vermell, OUTPUT);
+  pinMode (pin_groc, OUTPUT);
+  pinMode(pin_verd,OUTPUT);
+  pinMode(pin_LDR, INPUT);
   Serial.begin(9600);
-  Serial.println("Hello world");
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-  Serial.println("Truning ON  the LED");
-  digitalWrite(LED, HIGH);
-  delay(wait_time);
-  Serial.println("Turning OFF the LED");
-  digitalWrite(LED, LOW);
-  delay(wait_time);
+  int intensitat_llum = analogRead(pin_LDR);
+  Serial.println(intensitat_llum);
+
+  if(intensitat_llum >= 300){
+    digitalWrite(pin_verd, HIGH);
+    digitalWrite(pin_groc, LOW);
+    digitalWrite(pin_vermell, LOW);
+    Serial.println("Molta llum detectada");
+  }
+  else if (intensitat_llum >= 150){
+    digitalWrite(pin_verd, LOW);
+    digitalWrite(pin_groc, HIGH);
+    digitalWrite(pin_vermell, LOW);
+    Serial.println("Poca llum detectada");
+  }
+  else{
+    digitalWrite(pin_verd, LOW);
+    digitalWrite(pin_groc, LOW);
+    digitalWrite(pin_vermell, HIGH);
+    Serial.println("No es detecta llum.");
+  }
+  delay(500);
+
 }
