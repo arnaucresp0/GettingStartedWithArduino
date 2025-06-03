@@ -1,6 +1,6 @@
 // Define pin numbers
-const int buttonPin = 7;  // Push button connected to digital pin 2
-const int ledPin = 8;    // LED connected to digital pin 13
+const int buttonPin = 2;  // Push button connected to digital pin 2
+const int ledPin = 13;    // LED connected to digital pin 13
 
 void setup() {
   pinMode(buttonPin, INPUT_PULLUP); // Use internal pull-up resistor
@@ -13,7 +13,7 @@ void loop() {
   int buttonState = digitalRead(buttonPin);
   
   // If the button is pressed, turn on the LED
-  if (buttonState == HIGH) { // Active LOW due to pull-up resistor
+  if (buttonState == LOW) { // Active LOW due to pull-up resistor
     digitalWrite(ledPin, HIGH);
     Serial.println("Turning ON the LED.");
   } else {
