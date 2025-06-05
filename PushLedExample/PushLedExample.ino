@@ -13,7 +13,7 @@ void loop() {
   int buttonState = digitalRead(buttonPin);
   
   // If the button is pressed, turn on the LED
-  if (buttonState == LOW) { // Active LOW due to pull-up resistor
+  if (buttonState == HIGH) { // Active HIGH due to pull-up resistor
     digitalWrite(ledPin, HIGH);
     Serial.println("Turning ON the LED.");
   } else {
